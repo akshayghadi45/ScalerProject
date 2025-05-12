@@ -15,6 +15,7 @@ public class ProductResponseDTO {
     private String category;
     private String image;
     private String indicater;
+    public ProductResponseDTO() {}
 
     public  ProductResponseDTO(Product product){
         this.setId(product.getId());

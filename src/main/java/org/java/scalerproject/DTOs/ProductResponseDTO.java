@@ -17,14 +17,19 @@ public class ProductResponseDTO {
     private String indicater;
     public ProductResponseDTO() {}
 
-    public  ProductResponseDTO(Product product){
-        this.setId(product.getId());
-        this.setTitle(product.getName());
-        this.setDescription(product.getDescription());
-        this.setCategory(product.getCategory().getName());
-        this.setImage(product.getImageURl());
-        this.setPrice(product.getPrice().toString());
-        this.setIndicater("productResponseDTO");
+    public static ProductResponseDTO from(Product product){
 
+        if(product==null){
+         return null;
+        }
+        ProductResponseDTO productResponseDTO = new ProductResponseDTO();
+        productResponseDTO.setId(product.getId());
+        productResponseDTO.setTitle(product.getName());
+        productResponseDTO.setDescription(product.getDescription());
+        productResponseDTO.setCategory(product.getCategory().getName());
+        productResponseDTO.setImage(product.getImageURl());
+        productResponseDTO.setPrice(product.getPrice().toString());
+        productResponseDTO.setIndicater("productResponseDTO");
+        return productResponseDTO;
     }
 }

@@ -7,6 +7,8 @@ import org.java.scalerproject.exceptions.ProductNotFoundException;
 import org.java.scalerproject.models.Product;
 import org.java.scalerproject.service.ProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ public class ProductsController {
 
     @GetMapping("/product/{id}")
     public ProductResponseDTO getProductById(@PathVariable("id") long id) throws ProductNotFoundException {
-        return  new ProductResponseDTO(productService.getProductById(id));
+        return   ProductResponseDTO.from(productService.getProductById(id));
     }
 
 //    @ExceptionHandler(NullPointerException.class)
@@ -40,20 +42,22 @@ public class ProductsController {
       List<Product> products =  productService.getAllProducts();
       List<ProductResponseDTO> productResponseDTOs = new ArrayList<>();
       for (Product product : products) {
-          productResponseDTOs.add(product.toProductResponseDTO());
+          productResponseDTOs.add(ProductResponseDTO.from(product));
       }
       return productResponseDTOs;
     }
 
     @PostMapping("/products")
-    public ProductResponseDTO createProduct(@RequestBody CreateProductRequestDTO createFakeStoreProductRequestDTO){
+    public ResponseEntity<ProductResponseDTO> createProduct(@RequestBody CreateProductRequestDTO createFakeStoreProductRequestDTO){
             Product product = productService.createProduct(createFakeStoreProductRequestDTO.getTitle(),
                     createFakeStoreProductRequestDTO.getDescription(),
                     createFakeStoreProductRequestDTO.getImage(),
                     createFakeStoreProductRequestDTO.getCategory(),
                     createFakeStoreProductRequestDTO.getPrice()
                     );
-            return product.toProductResponseDTO();
+
+            return new ResponseEntity<>(ProductResponseDTO.from(product), HttpStatus.CREATED);
+
     }
 
     @PutMapping("/products/{id}")

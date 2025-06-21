@@ -20,6 +20,7 @@ public class Product extends Base{
 //    @ManyToOne
 //    private Category featuredCategory;
     private Double price;
+    private Double weight;
 
     public ProductResponseDTO toProductResponseDTO() {
         ProductResponseDTO productResponseDTO = new ProductResponseDTO();

@@ -20,7 +20,7 @@ public class ProductsController {
 
 
     //instead of adding @Qualifier we can also add @primary in the service 
-        ProductsController(@Qualifier("productSQLDbService") ProductService productService) {
+        ProductsController(@Qualifier("fakeStoreProductService") ProductService productService) {
         this.productService = productService;
     }
 

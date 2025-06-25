@@ -7,11 +7,13 @@ import lombok.Getter;
 import lombok.Setter;
 import org.java.scalerproject.DTOs.ProductResponseDTO;
 
+import java.io.Serializable;
+
 @Getter
 @Setter
 @Entity
 
-public class Product extends Base{
+public class Product extends Base implements Serializable {
 
     private String description;
     private String imageURl;

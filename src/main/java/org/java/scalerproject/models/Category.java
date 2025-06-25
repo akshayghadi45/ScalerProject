@@ -7,12 +7,13 @@ import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
 @Setter
 @Entity
-public class Category extends Base {
+public class Category extends Base implements Serializable {
     @OneToMany(mappedBy = "category")
     List<Product> products;
 

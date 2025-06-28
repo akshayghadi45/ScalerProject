@@ -21,6 +21,4 @@ public class Base implements Serializable {
     private Date createdAt;
     private Date updatedAt;
     private Boolean isDeleted = false;
-
-
 }

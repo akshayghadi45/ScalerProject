@@ -1,6 +1,8 @@
 package org.java.scalerproject.repositories;
 
 import org.java.scalerproject.models.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -12,5 +14,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Override
     public List<Product> findAll();
+
+    public Page<Product> findByNameContaining(String query, Pageable  pageable);
 }
 

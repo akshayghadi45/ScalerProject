@@ -1,5 +1,6 @@
 package org.java.scalerproject.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.EnumNaming;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
@@ -15,6 +16,7 @@ import java.util.List;
 @Entity
 public class Category extends Base implements Serializable {
     @OneToMany(mappedBy = "category")
+    @JsonIgnore
     List<Product> products;
 
 //    @OneToMany(mappedBy = "featuredCategory")

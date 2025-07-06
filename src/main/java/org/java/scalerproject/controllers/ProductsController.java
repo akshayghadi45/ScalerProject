@@ -3,6 +3,7 @@ package org.java.scalerproject.controllers;
 import org.java.scalerproject.DTOs.CreateProductRequestDTO;
 import org.java.scalerproject.DTOs.ProductResponseDTO;
 
+import org.java.scalerproject.commons.ApplicationCommons;
 import org.java.scalerproject.exceptions.ProductNotFoundException;
 import org.java.scalerproject.models.Product;
 import org.java.scalerproject.service.ProductService;
@@ -17,11 +18,12 @@ import java.util.List;
 @RestController
 public class ProductsController {
     ProductService productService;
-
+    ApplicationCommons applicationCommons;
 
     //instead of adding @Qualifier we can also add @primary in the service 
-        ProductsController(@Qualifier("productSQLDbService") ProductService productService) {
+        ProductsController(@Qualifier("productSQLDbService") ProductService productService, ApplicationCommons applicationCommons) {
         this.productService = productService;
+        this.applicationCommons = applicationCommons;
     }
 
     @GetMapping("/product/{id}")

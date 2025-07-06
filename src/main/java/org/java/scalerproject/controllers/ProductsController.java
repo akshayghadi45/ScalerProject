@@ -27,8 +27,10 @@ public class ProductsController {
     }
 
     @GetMapping("/product/{id}")
-    public ProductResponseDTO getProductById(@PathVariable("id") long id) throws ProductNotFoundException {
-        return   ProductResponseDTO.from(productService.getProductById(id));
+    public ProductResponseDTO getProductById(@PathVariable("id") long id, @RequestHeader("Authorization") String token) throws ProductNotFoundException {
+            //Validate token by calling user service
+            applicationCommons.validateToken(token);
+            return   ProductResponseDTO.from(productService.getProductById(id));
     }
 
 //    @ExceptionHandler(NullPointerException.class)

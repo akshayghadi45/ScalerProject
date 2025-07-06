@@ -49,7 +49,7 @@ class ProductsControllerTest {
         //Arrange
 
         //Act
-        ProductResponseDTO productResponseDTO = productsController.getProductById(1L);
+        ProductResponseDTO productResponseDTO = productsController.getProductById(1L, "Pass_token_here_passified_for_now");
         //Assert
         assertEquals(1L, productResponseDTO.getId());
         assertEquals("product 1", productResponseDTO.getTitle());
@@ -63,7 +63,7 @@ class ProductsControllerTest {
     void getProductFromIdreturnsNull() throws ProductNotFoundException {
         when(productService.getProductById(1L)).thenReturn(null);
 
-        ProductResponseDTO productResponseDTO= productsController.getProductById(1L);
+        ProductResponseDTO productResponseDTO= productsController.getProductById(1L, "Pass_token_here_passified_for_now");
         assertEquals(null,productResponseDTO);
 
     }

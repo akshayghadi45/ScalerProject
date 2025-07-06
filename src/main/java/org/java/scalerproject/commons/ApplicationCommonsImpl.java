@@ -18,7 +18,7 @@ public class ApplicationCommonsImpl implements ApplicationCommons {
         if(token==null||token.isEmpty()) {
             throw new RuntimeException("token is null or empty");
         }
-        String url = "http://localhost:9000/validate";
+        String url = "http://UserServiceScalerProject/validate";
         HttpHeaders headers = new HttpHeaders();
         headers.set(HttpHeaders.AUTHORIZATION, token);
         HttpEntity<Void> responseEntity = new HttpEntity<Void>(headers);
